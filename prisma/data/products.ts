@@ -42,7 +42,7 @@ export const  products = [
       "categoryId": 1
     },
     {
-      "name": "Squier Classic Vibe",
+      "name": "Squier classNameic Vibe",
       "price": 499.99,
       "image": "guitar_8",
       "categoryId": 1
@@ -90,7 +90,7 @@ export const  products = [
       "categoryId": 2
     },
     {
-      "name": "Squier Classic Vibe Bass",
+      "name": "Squier classNameic Vibe Bass",
       "price": 499.99,
       "image": "bass_6",
       "categoryId": 2
@@ -168,7 +168,7 @@ export const  products = [
       "categoryId": 3
     },
     {
-      "name": "Tama Starclassic",
+      "name": "Tama StarclassNameic",
       "price": 1699.99,
       "image": "drums_9",
       "categoryId": 3

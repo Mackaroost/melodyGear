@@ -15,7 +15,7 @@ const AsideCategories = async () => {
 
             </div>
         <div className="mb-2 p-4 mx-auto">
-    <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-slate-900">Bienvenido</h5>
+    <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-slate-0">Bienvenido</h5>
   </div>
             <nav>
                <CategoriesComponents data = {data}/>

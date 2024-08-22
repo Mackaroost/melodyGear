@@ -1,11 +1,18 @@
+import AsideCategories from "./components/AsideCategories";
+
 export default function PoductsLayout({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>) {
     return (
-        <main>
-            {children}
-        </main>
+        <>
+          <main className="flex" >
+      <AsideCategories/>
+      <div className="container rounded m-4 bg-slate-900">
+        {children}
+      </div>
+    </main>
+        </>
     );
   }

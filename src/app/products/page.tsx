@@ -1,12 +1,8 @@
-import AsideCategories from "./components/AsideCategories"
 
 export default function ProductsPage() {
   return (
-    <div className="flex" >
-      <AsideCategories/>
-      <div>
-        Contenido
-      </div>
-    </div>
+      <>
+        <h2 className="text-center text-slate-50 my-auto text-3xl">Contenido</h2> 
+    </>
   );
 }
