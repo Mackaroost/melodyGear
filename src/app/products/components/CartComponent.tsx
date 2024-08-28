@@ -1,12 +1,16 @@
 "use client";
 import useStoreCartView from "@/store/storeUiCart";
-import useCartStore from "@/store/storeCart";
+import storeCart from "@/store/storeCart";
+import ProductCartDetails from "./ProductCartDetails";
+import {XCircleIcon} from '@heroicons/react/24/solid'
+
+
 
 const CartComponent = () => {
   const open = useStoreCartView((state) => state.open);
   const setOpen = useStoreCartView((state) => state.setOpen);
-const element  = useCartStore((state)=>state.cart)
-console.log(element)
+  const orderCart = storeCart((state)=> state.cart)
+  console.log(orderCart)
 
   return (
     <>
@@ -15,14 +19,27 @@ console.log(element)
           <div className="flex items-center justify-between py-6">
             <h2 className="text-lg font-bold text-zinc-50 mx-auto">My shop</h2>
             <button
-              className="text-zinc-50 text-xl"
+            type = 'button'
               onClick={() => setOpen(false)}
             >
-              X
+             <XCircleIcon className="text-white h-8 w-8"/>
             </button>
           </div>
-          <h2 className="text-white">Product Details</h2>
-          {/* Aquí puedes añadir las características del producto */}
+          <div>
+            {
+              orderCart.map((item)=>{
+                return(
+                  <ProductCartDetails
+                  key = {item.id}
+                  item = {item}/>
+                )
+              })
+
+            }
+
+
+          </div>
+       
         </aside>
       )}
     </>

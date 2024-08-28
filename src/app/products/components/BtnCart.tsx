@@ -6,22 +6,23 @@ import { products } from '../../../../prisma/data/products';
 
 
 interface BtnCartProps{
-products: Product[]
+products: Product
 }
 
 
 const BtnCart = ({products}: BtnCartProps) => {
-  console.log(products)
+
     const setOpen = useStoreCartView((state) => state.setOpen);
-    const addOder = storeCart((state)=> state.addToCart)
-    const handleClick = (products : any) => {
+    const addOrder = storeCart((state)=> state.addToCart)
+
+    const handleClick = () => {
       setOpen(true)
-      addOder(products)
+      addOrder(products)
       
       }
   return (
     <button 
-    onClick={ ()=> handleClick(products)}
+    onClick={handleClick}
     
     className="text-sm">Add to cart
     </button>

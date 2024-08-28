@@ -50,7 +50,7 @@ const ProductsCard = ({ products }: ProductProps) => {
                     />
                   </svg>
 
-                 <BtnCart />
+                 <BtnCart products = {item}/>
                 </div>
               </div>
             </div>

@@ -11,8 +11,16 @@ interface StoreCart{
 
 const useCartStore = create<StoreCart>((set)=>({
     cart:[], 
-    addToCart: (value)=>{ console.log(value)}
-     
+    addToCart:(value)=>{
+        const{ categoryId, ...data} = value
+        set((state)=>(
+            {cart:[...state.cart, {
+                ...data,
+                quantity:1,
+                subTotal: 1 * value.price
+            }]
+        }))
+    }    
 }))
 
 
