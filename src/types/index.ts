@@ -1,6 +1,6 @@
 import { Product } from '@prisma/client'
 
-export type CartItems = Pick <Product, 'id'| 'name'| 'price'>&{
+export type CartItems = Pick <Product, 'id'| 'name'| 'price' | 'image'>&{
 quantity:number,
 subTotal:number;
 }

@@ -10,7 +10,7 @@ const CartComponent = () => {
   const open = useStoreCartView((state) => state.open);
   const setOpen = useStoreCartView((state) => state.setOpen);
   const orderCart = storeCart((state)=> state.cart)
-  console.log(orderCart)
+  //console.log(orderCart)
 
   return (
     <>
