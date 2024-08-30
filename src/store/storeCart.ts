@@ -5,6 +5,8 @@ import { Product } from '@prisma/client';
 interface StoreCart{
     cart:CartItems[]
     addToCart: (value: Product)=>void
+    incrementItems : (id:number)=>void
+    decrementItems: (id:number)=> void
 }
 
 const useCartStore = create<StoreCart>((set, get)=>({
@@ -28,7 +30,28 @@ const useCartStore = create<StoreCart>((set, get)=>({
         set(()=>({
            cart : cartOrder
         }))
-    }    
+    },
+    incrementItems:(id)=>{
+        set((state)=>({
+         cart : state.cart.map((item)=>item.id === id ? {
+            ...item,
+            quantity: item.quantity + 1,
+            subTotal : item.price * (item.quantity + 1)
+         }: item)
+        }))
+    },
+    decrementItems:(id)=>{
+
+        const cartOrder =  get().cart.map((item)=> item.id ===id ?{
+            ...item,
+            quantity: item.quantity - 1,
+            subTotal : item.price * (item.quantity - 1)
+        }:item)
+
+        set(()=>({
+            cart : cartOrder
+         }))
+    }
 }))
 
 
