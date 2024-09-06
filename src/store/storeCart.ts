@@ -7,6 +7,7 @@ interface StoreCart{
     addToCart: (value: Product)=>void
     incrementItems : (id:number)=>void
     decrementItems: (id:number)=> void
+    deleteItem : (id:number)=> void 
 }
 
 const useCartStore = create<StoreCart>((set, get)=>({
@@ -51,6 +52,9 @@ const useCartStore = create<StoreCart>((set, get)=>({
         set(()=>({
             cart : cartOrder
          }))
+    },
+    deleteItem: (id)=>{
+       set((state)=>({cart:state.cart.filter((item)=> item.id !== id)}))
     }
 }))
 

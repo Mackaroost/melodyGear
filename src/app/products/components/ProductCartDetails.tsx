@@ -14,22 +14,22 @@ const ProductCartDetails = ({item}:ItemProps) => {
 
   const increment = storeCart((state)=> state.incrementItems)
   const decrement = storeCart((state)=> state.decrementItems)
-
-  const disableBtnIcrement= useMemo(()=>item.quantity === MAX_ITEMS, [item])
+   const deleteProduct = storeCart((state)=> state.deleteItem)
+     const disableBtnIcrement= useMemo(()=>item.quantity === MAX_ITEMS, [item])
   const disableBtnDecrement= useMemo(()=>item.quantity === 1, [item])
   return (
     <div className="space-y-1 p-4">
-      <div className="space-y-4 flex border justify-between border-slate-100">
+      <div className="space-y-4 flex  justify-between ">
           <Image
             src={`/${item.image}`}
             alt={item.name}
             width={100}
             height={100}
-            className="border border-slate-100 ">
+            className=" ">
           </Image>
-        <div className="flex-col justify-center border border-slate-100">
+        <div className="flex-col justify-center  ">
             <p className="text-sm text-white text-center font-ligth">{item.name} </p>
-            <p className="text-sm text-center font-ligth text-gray-700 py-2"> ${item.price}</p>
+            <p className="text-sm text-center font-ligth text-white py-2"> ${item.price}</p>
           <div className="flex items-center  gap-3 px-2 py-2 bg-gray-100 w-fit mx-auto rounded-lg">
             <button 
             type="button" 
@@ -38,7 +38,7 @@ const ProductCartDetails = ({item}:ItemProps) => {
             onClick={()=> decrement(item.id)}>
               <MinusIcon className="h-4 w-4" />
             </button>
-            <p className="text-sm font-black ">{item.quantity}</p>
+            <p className="text-sm font-black text-black">{item.quantity}</p>
             <button
              type="button" 
              disabled = {disableBtnIcrement}
@@ -48,11 +48,13 @@ const ProductCartDetails = ({item}:ItemProps) => {
             </button>
           </div>
         </div>
-        <div className="flex-col justify-center items-center border border-slate-100">
+        <div className="flex-col justify-center items-center  ">
           <div>
-          <button >Close</button>
+          <button
+          onClick={()=> deleteProduct(item.id)}
+          >Close</button>
           </div>
-            <p className="text-sm text-center font-black text-gray-700 pt-4"> ${item.subTotal}</p>
+            <p className="text-sm text-center font-black text-white pt-4"> ${item.subTotal}</p>
         </div>
       </div>
     </div>

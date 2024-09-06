@@ -11,6 +11,7 @@ export default function PoductsLayout({
       <AsideCategories/>
       <div className="container rounded m-4 bg-slate-900">
         {children}
+      
       </div>
     </main>
         </>
