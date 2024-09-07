@@ -1,10 +1,13 @@
 "use client";
+
 import useStoreCartView from "@/store/storeUiCart";
 import storeCart from "@/store/storeCart";
 import ProductCartDetails from "./ProductCartDetails";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import { useMemo } from "react";
-import FormOrder from "./FormOrder";
+import { toast } from "sonner";
+import { schemaOrder } from "@/schema";
+import { actionCreateOrder } from "../../../actions/create-order-action"; // Asegúrate de que esta ruta sea correcta
 
 const CartComponent = () => {
   const open = useStoreCartView((state) => state.open);
@@ -24,6 +27,41 @@ const CartComponent = () => {
   const handleFormView = () => {
     setFormView(true);
   };
+
+  async function handleSubmit(formData: FormData) {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const telephone = Number(formData.get("telephone"));
+
+    if (!name || !email || isNaN(telephone)) {
+      console.log("Invalid input data");
+    }
+
+    const dataClient = {
+      name,
+      email,
+      telephone,
+      total,
+      orderCart
+    };
+
+    const results = schemaOrder.safeParse(dataClient);
+  console.log(results)
+  if(!results.success){
+    console.log(results.error.issues); // Esto imprimirá los errores específicos
+    results.error.issues.forEach((item) => {
+      toast.error(item.message);
+    }
+  );
+  }
+
+    const response = await actionCreateOrder(dataClient);
+    if (response?.errors) {
+      response.errors.forEach((element) => {
+        toast.error(element.message);
+      });
+    }
+  }
 
   return (
     <>
@@ -54,7 +92,26 @@ const CartComponent = () => {
           >
             Iniciar Compra
           </button>
-          {formView && <FormOrder />}
+          {formView && (
+            <form
+              action={handleSubmit}
+              className="mt-3 w-full rounded-md py-4 flex flex-col items-center justify-center"
+            >
+              <input className="p-1 text-center" type="text" placeholder="Name" name="name" />
+              <input className="my-3 p-1 text-center" type="email" placeholder="Email" name="email" />
+              <input
+                className="p-1 text-center"
+                type="number"
+                placeholder="Telephone"
+                name="telephone"
+              />
+              <input
+                className="space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600 my-2"
+                type="submit"
+                value="Generar Orden"
+              />
+            </form>
+          )}
         </aside>
       )}
     </>
