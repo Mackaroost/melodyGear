@@ -1,5 +1,5 @@
 "use client";
-
+import { useRef } from "react"; 
 import useStoreCartView from "@/store/storeUiCart";
 import storeCart from "@/store/storeCart";
 import ProductCartDetails from "./ProductCartDetails";
@@ -7,7 +7,8 @@ import { XCircleIcon } from "@heroicons/react/24/solid";
 import { useMemo } from "react";
 import { toast } from "sonner";
 import { schemaOrder } from "@/schema";
-import { actionCreateOrder } from "../../../actions/create-order-action"; // Asegúrate de que esta ruta sea correcta
+import { actionCreateOrder } from "../../../../actions/create-order-action"; 
+import useCartStore from "@/store/storeCart";
 
 const CartComponent = () => {
   const open = useStoreCartView((state) => state.open);
@@ -17,11 +18,14 @@ const CartComponent = () => {
     () => orderCart.reduce((total, item) => total + item.quantity * item.price, 0),
     [orderCart]
   );
+  const clearCart = useCartStore((state) => state.clearCart);
   const formView = useStoreCartView((state) => state.openForm);
   const setFormView = useStoreCartView((state) => state.setOpenForm);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleClose = () => {
     setOpen(false);
+    setFormView(false);
   };
 
   const handleFormView = () => {
@@ -35,6 +39,7 @@ const CartComponent = () => {
 
     if (!name || !email || isNaN(telephone)) {
       console.log("Invalid input data");
+      return; 
     }
 
     const dataClient = {
@@ -42,24 +47,32 @@ const CartComponent = () => {
       email,
       telephone,
       total,
-      orderCart
+      orderCart,
     };
 
     const results = schemaOrder.safeParse(dataClient);
-  console.log(results)
-  if(!results.success){
-    console.log(results.error.issues); // Esto imprimirá los errores específicos
-    results.error.issues.forEach((item) => {
-      toast.error(item.message);
+    if (!results.success) {
+      results.error.issues.forEach((item) => {
+        toast.error(item.message);
+      });
+      return; 
     }
-  );
-  }
 
     const response = await actionCreateOrder(dataClient);
     if (response?.errors) {
       response.errors.forEach((element) => {
         toast.error(element.message);
       });
+    } else {
+      toast.success("Order created successfully!");
+      clearCart(); 
+      // Resetea el formulario
+      if (formRef.current) {
+        formRef.current.reset();
+        setOpen(false);
+
+
+      }
     }
   }
 
@@ -94,6 +107,7 @@ const CartComponent = () => {
           </button>
           {formView && (
             <form
+              ref={formRef} 
               action={handleSubmit}
               className="mt-3 w-full rounded-md py-4 flex flex-col items-center justify-center"
             >

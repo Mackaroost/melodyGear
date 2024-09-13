@@ -1,4 +1,4 @@
-import AsideCategories from "./components/AsideCategories";
+import AsideCategories from "./components/products/AsideCategories";
 
 export default function PoductsLayout({
     children,

@@ -1,11 +1,22 @@
 
+"use client"
 import { Product } from "@prisma/client";
-import BtnCart from "./BtnCart";
+import useStoreCartView from "@/store/storeUiCart";
+import storeCart from "@/store/storeCart";
 
 type ProductProps = {
   products: Product[];
 };
 const ProductsCard = ({ products }: ProductProps) => {
+  const setOpen = useStoreCartView((state) => state.setOpen);
+    const addOrder = storeCart((state)=> state.addToCart)
+
+    const handleClick = (item: Product) => (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      setOpen(true);
+      addOrder(item);
+    };
+    
   return (
     <>
       {products.map((item) => {
@@ -50,7 +61,10 @@ const ProductsCard = ({ products }: ProductProps) => {
                     />
                   </svg>
 
-                 <BtnCart products = {item}/>
+                  <button 
+                      onClick={handleClick(item)}
+                      className="text-sm">Add to cart
+                  </button>
                 </div>
               </div>
             </div>

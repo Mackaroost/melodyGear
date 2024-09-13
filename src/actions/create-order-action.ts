@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { schemaOrder } from "@/schema";
-import { toast } from 'sonner' // Likely a typo, assuming `toast` for notifications
+import { toast } from 'sonner' 
 
 export async function actionCreateOrder(data: unknown) {
   // console.log('creando desde el server') // Commented out for production
@@ -32,7 +32,7 @@ export async function actionCreateOrder(data: unknown) {
         status: false,
       },
     });
-       toast.success('Order created successfully!')
+      
 
   } catch (error) {
     console.log(error);

@@ -10,8 +10,7 @@ async function main (){
     await prisma.category.createMany({
         data: categories,
       });
-  
-      
+
       await prisma.product.createMany({
         data: products,
       });
