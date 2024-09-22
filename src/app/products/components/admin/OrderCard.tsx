@@ -45,8 +45,8 @@ export default function OrderCard({ order }: OrderPropsAdmin) {
       className="mt-4">
         <input
           className="hidden"
+          name = "orderId"
           value={order.id}
-          name = "order-id"
         />
         <input
           type="submit"

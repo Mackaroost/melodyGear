@@ -14,3 +14,7 @@ export const schemaOrder = z.object({
     })
   ),
 });
+
+export const schemaFormSearch = z.object({
+  search: z.string().trim().min(1, {message:'Debe completar los datos'})
+})

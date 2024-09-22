@@ -17,7 +17,7 @@ datasource db {
 model Category {
   id      Int      @id @default(autoincrement())
   name    String 
-  slug String @unique
+  slug    String @unique
   products Product[]
 }
 
@@ -38,7 +38,7 @@ model Order{
   telephone Float
   date DateTime @default(now())
   status       Boolean     @default(false)
-  readyStatus DateTime?
+  readyStatus  DateTime?
   total Float
   OrderProduct OrderProduct[]
 }

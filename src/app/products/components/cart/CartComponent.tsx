@@ -70,8 +70,6 @@ const CartComponent = () => {
       if (formRef.current) {
         formRef.current.reset();
         setOpen(false);
-
-
       }
     }
   }
