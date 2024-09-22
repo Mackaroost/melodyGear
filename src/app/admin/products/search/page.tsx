@@ -1,7 +1,7 @@
 import React from 'react'
 import { products } from '../../../../../prisma/data/products';
 import { prisma } from '@/lib/prisma';
-import ProductTable from '@/app/products/components/admin/ProductTable';
+import ProductTable from '@/components/admin/ProductTable';
 
 const getSearch = async (searchTerm: string)=>{
 const result = await prisma.product.findMany({

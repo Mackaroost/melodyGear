@@ -1,4 +1,4 @@
-import OrderCard from '@/app/products/components/admin/OrderCard';
+import OrderCard from '@/components/admin/OrderCard';
 import { prisma } from '@/lib/prisma';
 
 async function getOrders() {

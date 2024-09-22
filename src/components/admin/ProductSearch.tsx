@@ -21,7 +21,7 @@ const ProductSearch = () => {
             })
                return 
         }
-        router.push(`products/search/?search=${result.data.search}`)
+        router.push(`products/search?search=${result.data.search}`)
     }
     return (
     <div className="pt-4">

@@ -1,13 +1,13 @@
 
-
-import ProductTable from "@/app/products/components/admin/ProductTable";
+import ProductTable from "@/components/admin/ProductTable";
 import { prisma } from "@/lib/prisma";
 import { products } from "../../../../prisma/data/products"; // No se necesita si no lo estás usando
-import { ProductPagination } from "@/app/products/components/admin/ProductPagination";
+import { ProductPagination } from "@/components/admin/ProductPagination";
 import { redirect } from "next/navigation";
 import { schemaFormSearch } from "@/schema";
 import { toast } from "sonner";
-import ProductSearch from "@/app/products/components/admin/ProductSearch";
+import ProductSearch from "@/components/admin/ProductSearch";
+import CreateProductAdmin from "@/components/admin/CreateProductAdmin";
 
 const getAllProduct = async () => {
   try {
@@ -59,7 +59,10 @@ const AdminProductsPage = async ({ searchParams }: { searchParams: { page: strin
       <div>
         <h2>Administras tus Productos</h2>
       </div>
-      <ProductSearch/>
+      <div className="flex justify-between items-center py-2">
+        <CreateProductAdmin/>
+        <ProductSearch/>
+      </div>
       <ProductTable data={products} />
       <ProductPagination page={pageActual} totalPage={totalPage} />
     </>

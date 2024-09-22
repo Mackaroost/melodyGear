@@ -7,7 +7,7 @@ import { XCircleIcon } from "@heroicons/react/24/solid";
 import { useMemo } from "react";
 import { toast } from "sonner";
 import { schemaOrder } from "@/schema";
-import { actionCreateOrder } from "../../../../actions/create-order-action"; 
+import { actionCreateOrder } from "../../actions/create-order-action"; 
 import useCartStore from "@/store/storeCart";
 
 const CartComponent = () => {

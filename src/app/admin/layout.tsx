@@ -1,5 +1,5 @@
 import { Toaster } from "sonner";
-import AdminSidebar from "../products/components/admin/adminSideBar";
+import AdminSidebar from "../../components/admin/adminSideBar";
 
 
 export default async function AdminLayout({

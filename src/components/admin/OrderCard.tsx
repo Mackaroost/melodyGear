@@ -16,22 +16,21 @@ export default function OrderCard({ order }: OrderPropsAdmin) {
           Cliente: {order.name}
         </p>
         <p className=" text-gray-700 truncate">Email: {order.email}</p>
-        <p className=" text-gray-700 truncate">
-          Teléfono: {order.telephone}
-        </p>
+        <p className=" text-gray-700 truncate">Teléfono: {order.telephone}</p>
 
         <div className="mt-4">
-            {
+          {
             order.OrderProduct.map((item) => (
-              <div
-                key={item.id}
-              >
-             <p className=" text-gray-700 truncate">Productos: {item.product.name}</p>
-             <p className=" text-gray-700 truncate my-4">Cantidad: {item.quantity}</p>
-                    
-                </div>
-        
-            ))}
+             <div key={item.id}>
+               <p className=" text-gray-700 truncate">
+                Productos: {item.product.name}
+               </p>
+               <p className=" text-gray-700 truncate my-4">
+                Cantidad: {item.quantity}
+               </p>
+             </div>
+          ))
+          }
         </div>
       </div>
 
@@ -40,14 +39,12 @@ export default function OrderCard({ order }: OrderPropsAdmin) {
         <dd className=" font-medium text-gray-900">${order.total}</dd>
       </div>
 
-      <form 
-      action={updateOrder}
-      className="mt-4">
-        <input
-          className="hidden"
-          name = "orderId"
-          value={order.id}
-        />
+      <form action={updateOrder} className="mt-4">
+        <input 
+        className="hidden"
+        name="orderId" 
+        value={order.id} />
+
         <input
           type="submit"
           className="bg-indigo-600 hover:bg-indigo-800 text-white w-full p-3 rounded uppercase font-bold cursor-pointer"

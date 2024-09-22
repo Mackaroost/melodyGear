@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import { products } from '../../../../../prisma/data/products';
-import ProductsCard from "../../components/products/ProductsCard";
-import CartComponent from "../../components/cart/CartComponent";
+import ProductsCard from "../../../../components/products/ProductsCard";
+import CartComponent from "../../../../components/cart/CartComponent";
 
 
 async function getProducts(category:string) {
