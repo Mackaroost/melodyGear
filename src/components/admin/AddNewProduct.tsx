@@ -1,23 +1,33 @@
 "use client"
+import { CreatePorductDb } from '@/actions/insert-productDb-action'
 import { ProductSchema } from '@/schema'
-import CreateFormProducts from './CreateFormProducts'
 import { toast } from 'sonner'
 const AddNewProduct =  ({children}: {children: React.ReactNode}) => {
     
-    const handleCreate = (formData:FormData)=>{
+    const handleCreate = async (formData:FormData)=>{
         const data = {
             name: formData.get('name'),
             price: formData.get('price'),
-            caregoryId: formData.get('categoryId')
+            categoryId: formData.get('categoryId'),
+            image: formData.get('image')
         }
         const results = ProductSchema.safeParse(data)
         if(!results.success){
             results.error.issues.forEach((item)=>{
+                console.log(item.message)
                 toast.error(item.message)
             }) 
             return
         }
-        console.log(results.data)
+        const response = await CreatePorductDb(results.data)
+        if(response?.errors){
+            response.errors.forEach((item)=>{
+                console.log(item.message)
+                toast.error(item.message)
+            }) 
+            return
+        }
+        toast.success('Producto Creado exitosamen')
     }
 
 

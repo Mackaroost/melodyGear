@@ -42,7 +42,6 @@ const getCategories = async()=>{
           </label>
           <select
             className="block w-full p-3 bg-slate-100"
-            id="categoryId"
             name="categoryId"
           >
             <option  value="">-- Seleccione --</option>
@@ -54,6 +53,15 @@ const getCategories = async()=>{
               </option>
             ))}
           </select>
+
+          <div> 
+
+          <label className="text-slate-800" htmlFor="categoryId">
+           Imagen:
+          </label>
+          <input type = 'hidden' name= 'image'/>
+          </div>
+
         </div>
       </>
     );
