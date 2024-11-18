@@ -14,10 +14,9 @@ interface StoreCart {
 const useCartStore = create<StoreCart>((set, get) => ({
   cart: [],
   addToCart: (value) => {
-    const { categoryId, ...data } = value; // categoryId is not used, hence omitted
+    const { categoryId, ...data } = value; 
     let cartOrder: CartItems[] = [];
 
-    // Check if the item already exists in the cart
     if (get().cart.find((item) => item.id === value.id)) {
       cartOrder = get().cart.map((item) =>
         item.id === value.id
@@ -31,7 +30,7 @@ const useCartStore = create<StoreCart>((set, get) => ({
     } else {
       // Add new item to cart
       cartOrder = [
-        ...get().cart,
+         ...get().cart,
         {
           ...data,
           quantity: 1,
@@ -80,7 +79,7 @@ const useCartStore = create<StoreCart>((set, get) => ({
     set((state) => ({ cart: state.cart.filter((item) => item.id !== id) }));
   },
   clearCart: () => {
-    console.log('clearForm called');
+   // console.log('clearForm called');
     set(() => ({ cart: []}));
   },
 }));

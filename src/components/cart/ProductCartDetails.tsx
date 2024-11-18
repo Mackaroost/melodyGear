@@ -19,13 +19,13 @@ const ProductCartDetails = ({item}:ItemProps) => {
   const disableBtnDecrement= useMemo(()=>item.quantity === 1, [item])
   return (
     <div className="space-y-1 p-4">
-      <div className="space-y-4 flex  justify-between ">
+      <div className="space-y-4 flex gap-x-1 justify-between ">
           <Image
-            src={`/${item.image}`}
+            src={`/productos/${item.image}.jpg`}
             alt={item.name}
             width={100}
             height={100}
-            className=" ">
+            >
           </Image>
         <div className="flex-col justify-center  ">
             <p className="text-sm text-white text-center font-ligth">{item.name} </p>
@@ -50,11 +50,10 @@ const ProductCartDetails = ({item}:ItemProps) => {
         </div>
         <div className="flex-col justify-center items-center  ">
           <div>
-          <button
+          <button className="text-sm text-amber-400"
           onClick={()=> deleteProduct(item.id)}
-          >Close</button>
+          >Quitar</button>
           </div>
-            <p className="text-sm text-center font-black text-white pt-4"> ${item.subTotal}</p>
         </div>
       </div>
     </div>

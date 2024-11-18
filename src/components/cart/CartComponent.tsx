@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react"; 
+import { useRef } from "react";
 import useStoreCartView from "@/store/storeUiCart";
 import storeCart from "@/store/storeCart";
 import ProductCartDetails from "./ProductCartDetails";
@@ -7,7 +7,7 @@ import { XCircleIcon } from "@heroicons/react/24/solid";
 import { useMemo } from "react";
 import { toast } from "sonner";
 import { schemaOrder } from "@/schema";
-import { actionCreateOrder } from "../../actions/create-order-action"; 
+import { actionCreateOrder } from "../../actions/create-order-action";
 import useCartStore from "@/store/storeCart";
 
 const CartComponent = () => {
@@ -15,7 +15,8 @@ const CartComponent = () => {
   const setOpen = useStoreCartView((state) => state.setOpen);
   const orderCart = storeCart((state) => state.cart);
   const total = useMemo(
-    () => orderCart.reduce((total, item) => total + item.quantity * item.price, 0),
+    () =>
+      orderCart.reduce((total, item) => total + item.quantity * item.price, 0),
     [orderCart]
   );
   const clearCart = useCartStore((state) => state.clearCart);
@@ -39,7 +40,7 @@ const CartComponent = () => {
 
     if (!name || !email || isNaN(telephone)) {
       console.log("Invalid input data");
-      return; 
+      return;
     }
 
     const dataClient = {
@@ -55,7 +56,7 @@ const CartComponent = () => {
       results.error.issues.forEach((item) => {
         toast.error(item.message);
       });
-      return; 
+      return;
     }
 
     const response = await actionCreateOrder(dataClient);
@@ -65,7 +66,7 @@ const CartComponent = () => {
       });
     } else {
       toast.success("Order created successfully!");
-      clearCart(); 
+      clearCart();
       // Resetea el formulario
       if (formRef.current) {
         formRef.current.reset();
@@ -96,21 +97,34 @@ const CartComponent = () => {
               </div>
             )}
           </div>
-          <button
-            onClick={handleFormView}
-            className="space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600 my-2"
-            type="button"
-          >
-            Iniciar Compra
-          </button>
+
+          {orderCart.length > 0 && (
+            <button
+              className="space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600 my-2"
+              onClick={handleFormView}
+              type="button"
+            >
+              Iniciar Compra
+            </button>
+          )}
           {formView && (
             <form
-              ref={formRef} 
+              ref={formRef}
               action={handleSubmit}
               className="mt-3 w-full rounded-md py-4 flex flex-col items-center justify-center"
             >
-              <input className="p-1 text-center" type="text" placeholder="Name" name="name" />
-              <input className="my-3 p-1 text-center" type="email" placeholder="Email" name="email" />
+              <input
+                className="p-1 text-center"
+                type="text"
+                placeholder="Name"
+                name="name"
+              />
+              <input
+                className="my-3 p-1 text-center"
+                type="email"
+                placeholder="Email"
+                name="email"
+              />
               <input
                 className="p-1 text-center"
                 type="number"

@@ -38,7 +38,6 @@ const AddNewProduct =  ({children}: {children: React.ReactNode}) => {
         action={handleCreate}>
 
         {children}
-
             <input type="submit" className='space-y-2 bg-sky-500 text-white text-lg' value= 'Create Product' />
         </form>
 

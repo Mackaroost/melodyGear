@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import ImagenForm from "./ImagenForm";
 
 const getCategories = async()=>{
     const data = await prisma.category.findMany()
@@ -55,11 +56,7 @@ const getCategories = async()=>{
           </select>
 
           <div> 
-
-          <label className="text-slate-800" htmlFor="categoryId">
-           Imagen:
-          </label>
-          <input type = 'hidden' name= 'image'/>
+          <ImagenForm/>
           </div>
 
         </div>

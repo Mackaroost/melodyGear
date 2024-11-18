@@ -44,19 +44,19 @@ export const  products = [
     {
       "name": "Squier classNameic Vibe",
       "price": 499.99,
-      "image": "guitar_8",
+      "image": "guitar_1",
       "categoryId": 1
     },
     {
       "name": "Epiphone SG",
       "price": 699.99,
-      "image": "guitar_9",
+      "image": "guitar_2",
       "categoryId": 1
     },
     {
       "name": "G&L Legacy",
       "price": 1099.99,
-      "image": "guitar_10",
+      "image": "guitar_3",
       "categoryId": 1
     },
     {
@@ -104,19 +104,19 @@ export const  products = [
     {
       "name": "Fender Jazz Bass",
       "price": 1199.99,
-      "image": "bass_8",
+      "image": "bass_1",
       "categoryId": 2
     },
     {
       "name": "Epiphone Thunderbird",
       "price": 699.99,
-      "image": "bass_9",
+      "image": "bass_2",
       "categoryId": 2
     },
     {
       "name": "Jackson JS3",
       "price": 799.99,
-      "image": "bass_10",
+      "image": "bass_3",
       "categoryId": 2
     },
     {
@@ -176,7 +176,7 @@ export const  products = [
     {
       "name": "DW Design Series",
       "price": 1399.99,
-      "image": "drums_10",
+      "image": "drums_2",
       "categoryId": 3
     },
     {
@@ -194,49 +194,49 @@ export const  products = [
     {
       "name": "Yamaha YAS-280 Saxophone",
       "price": 1099.99,
-      "image": "wind_3",
+      "image": "wind_1",
       "categoryId": 4
     },
     {
       "name": "Selmer Soprano Saxophone",
       "price": 1499.99,
-      "image": "wind_4",
+      "image": "wind_2",
       "categoryId": 4
     },
     {
       "name": "Yamaha YFL-222 Flute",
       "price": 799.99,
-      "image": "wind_5",
+      "image": "wind_1",
       "categoryId": 4
     },
     {
       "name": "Jupiter JFL700E Flute",
       "price": 599.99,
-      "image": "wind_6",
+      "image": "wind_2",
       "categoryId": 4
     },
     {
       "name": "Buffet Crampon Clarinet",
       "price": 899.99,
-      "image": "wind_7",
+      "image": "wind_2",
       "categoryId": 4
     },
     {
       "name": "Yamaha YCL-255 Clarinet",
       "price": 699.99,
-      "image": "wind_8",
+      "image": "wind_1",
       "categoryId": 4
     },
     {
       "name": "Yamaha YAS-480 Saxophone",
       "price": 1299.99,
-      "image": "wind_9",
+      "image": "wind_1",
       "categoryId": 4
     },
     {
       "name": "Bach TB711 Trombone",
       "price": 799.99,
-      "image": "wind_10",
+      "image": "wind_2",
       "categoryId": 4
     },
     {
@@ -260,43 +260,43 @@ export const  products = [
     {
       "name": "Roland GO:PIANO",
       "price": 329.99,
-      "image": "keyboard_4",
+      "image": "keyboard_3",
       "categoryId": 5
     },
     {
       "name": "Yamaha P-125",
       "price": 649.99,
-      "image": "keyboard_5",
+      "image": "keyboard_4",
       "categoryId": 5
     },
     {
       "name": "Kawai ES110",
       "price": 699.99,
-      "image": "keyboard_6",
+      "image": "keyboard_2",
       "categoryId": 5
     },
     {
       "name": "Nord Electro 6D",
       "price": 2499.99,
-      "image": "keyboard_7",
+      "image": "keyboard_1",
       "categoryId": 5
     },
     {
       "name": "Roland RD-2000",
       "price": 2499.99,
-      "image": "keyboard_8",
+      "image": "keyboard_3",
       "categoryId": 5
     },
     {
       "name": "Yamaha Montage 8",
       "price": 3999.99,
-      "image": "keyboard_9",
+      "image": "keyboard_4",
       "categoryId": 5
     },
     {
       "name": "Korg Kronos 2",
       "price": 3799.99,
-      "image": "keyboard_10",
+      "image": "keyboard_3",
       "categoryId": 5
     },
     {
@@ -326,37 +326,37 @@ export const  products = [
     {
       "name": "LP Aspire Bongos",
       "price": 119.99,
-      "image": "percussion_5",
+      "image": "percussion_1",
       "categoryId": 6
     },
     {
       "name": "Remo Djembe",
       "price": 179.99,
-      "image": "percussion_6",
+      "image": "percussion_2",
       "categoryId": 6
     },
     {
       "name": "Meinl Timbales",
       "price": 249.99,
-      "image": "percussion_7",
+      "image": "percussion_3",
       "categoryId": 6
     },
     {
       "name": "Pearl Primero Bongos",
       "price": 139.99,
-      "image": "percussion_8",
+      "image": "percussion_3",
       "categoryId": 6
     },
     {
       "name": "Tycoon Percussion Congas",
       "price": 449.99,
-      "image": "percussion_9",
+      "image": "percussion_1",
       "categoryId": 6
     },
     {
       "name": "Remo Cajon",
       "price": 159.99,
-      "image": "percussion_10",
+      "image": "percussion_3",
       "categoryId": 6
     }
   ]

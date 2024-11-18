@@ -1,4 +1,4 @@
-"user server"
+"use server"
 
 import { ProductSchema } from "@/schema"
 import { prisma } from "@/lib/prisma"
