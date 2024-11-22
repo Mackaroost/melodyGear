@@ -20,13 +20,16 @@ const ProductCartDetails = ({item}:ItemProps) => {
   return (
     <div className="space-y-1 p-4">
       <div className="space-y-4 flex gap-x-1 justify-between ">
+        <div className="overflow-hidden relative w-28 h-28 bg-white rounded">
           <Image
             src={`/productos/${item.image}.jpg`}
             alt={item.name}
-            width={100}
-            height={100}
+            fill
+            objectFit="contain"
+            className="p-2"
             >
           </Image>
+          </div>
         <div className="flex-col justify-center  ">
             <p className="text-sm text-white text-center font-ligth">{item.name} </p>
             <p className="text-sm text-center font-ligth text-white py-2"> ${item.price}</p>
