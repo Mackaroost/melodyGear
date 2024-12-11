@@ -3,6 +3,6 @@ const baseUrl = 'https://res.cloudinary.com'
 if(path.startsWith(baseUrl)){
     return  path
 }else{
-    return `products/${path}.com`
+    return `/productos/${path}.JPG`
 }
 }

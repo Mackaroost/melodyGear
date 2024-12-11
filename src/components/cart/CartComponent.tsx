@@ -71,6 +71,7 @@ const CartComponent = () => {
       if (formRef.current) {
         formRef.current.reset();
         setOpen(false);
+        setFormView(false)
       }
     }
   }
@@ -78,7 +79,8 @@ const CartComponent = () => {
   return (
     <>
       {open && (
-        <aside className="md:fixed md:right-0 top-0 md:h-full bg-gray-800 p-4 md:w-96 flex flex-col">
+        <aside className="md:fixed md:right-0 top-0 md:h-screen bg-gray-800 p-4 md:w-96 flex flex-col overflow-y-auto">
+
           <div className="flex items-center justify-between py-6">
             <h2 className="text-lg font-bold text-zinc-50 mx-auto">My shop</h2>
             <button type="button" onClick={handleClose}>

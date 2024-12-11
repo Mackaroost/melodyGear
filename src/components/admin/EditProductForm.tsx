@@ -1,10 +1,13 @@
 "use client"
-import { CreatePorductDb } from '@/actions/insert-productDb-action'
+
 import { ProductSchema } from '@/schema'
 import { toast } from 'sonner'
-import { useRouter } from 'next/navigation'
-const AddNewProduct =  ({children}: {children: React.ReactNode}) => {
-    const router = useRouter()
+import { useParams } from 'next/navigation'
+import { EditProductDb } from '@/actions/edit-productDb'
+const EditProductForm =  ({children}: {children: React.ReactNode}) => {
+    const params = useParams()
+    const id = +params.id!
+    //console.log(typeof(id))
     
     const handleCreate = async (formData:FormData)=>{
         const data = {
@@ -21,7 +24,8 @@ const AddNewProduct =  ({children}: {children: React.ReactNode}) => {
             }) 
             return
         }
-        const response = await CreatePorductDb(results.data)
+        const response = await EditProductDb(results.data, id)
+
         if(response?.errors){
             response.errors.forEach((item)=>{
                 console.log(item)
@@ -30,24 +34,24 @@ const AddNewProduct =  ({children}: {children: React.ReactNode}) => {
             }) 
             return
         }
-        toast.success('Producto Creado exitosamen')
+        toast.success('Producto actualizado exitosamente')
     }
 
 
   return (
-    <div className='p-4 space-y-4 container mx-auto bg-slate-400'>
+    <div className='p-4 space-y-4 container mx-auto bg-slate-500'>
         <form 
         className='space-y-5'
         action={handleCreate}>
 
         {children}
-        <div className = 'flex justify-center gap-x-5 items-center'>
-            <input type="submit" className='space-y-2 bg-sky-500 text-white font-bold py-2 px-4 rounded inline-flex items-center' value= 'Create Product' />
-            <button type="button" className='space-y-2 bg-sky-500 text-white font-bold py-2 px-4 rounded inline-flex items-center' onClick={() => router.push('/admin/products')}> Volver </button>
-            </div>
+            <input type="submit" className='space-y-2 bg-sky-500 text-white text-lg' value= 'Editar Product' />
         </form>
+
+
+
     </div>
   )
 }
 
-export default AddNewProduct
+export default EditProductForm

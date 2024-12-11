@@ -4,16 +4,17 @@ import { ProductSchema } from "@/schema"
 import { prisma } from "@/lib/prisma"
 
 
-export  const CreatePorductDb = async  (data:unknown) => {
-    console.log(data)
+export  const EditProductDb = async  (data:unknown, id:number ) => {
+    
 const res = ProductSchema.safeParse(data)
 if(!res.success){
 return {
     errors: res.error.issues
 }
 }
-await prisma.product.create({
+await prisma.product.update({
+    where: {id},
     data: res.data
-})
 }
-
+)
+}
